@@ -1,11 +1,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: my-app
+  name: bubbles-app
   namespace: openshift-gitops
 spec:
   destination:
-    namespace: my-app
+    namespace: bubbles-app
     server: https://api.clusterb.elastic.click:6443
   project: default 
   source: 
