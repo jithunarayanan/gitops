@@ -1,0 +1,53 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+  labels: 
+    app: my-app
+  namespace: my-app
+spec:
+  replicas: 3
+  selector: 
+    matchLabels:
+      app: my-app
+  strategy: {}
+  template:
+    metadata:
+      labels: 
+        app: my-app
+    spec:
+      # imagePullSecrets:
+      #   - name: regcred
+      containers:
+        - name: my-app
+          image: quay.io/rhdevelopers/bgd:1.0.0
+          ports:
+            - containerPort: 8080
+          env:
+            - name: COLOR
+              value: "red"
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
+          # livenessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: 3001
+          #   initialDelaySeconds: 10
+          #   periodSeconds: 15
+          #   timeoutSeconds: 2
+          #   failureThreshold: 3
+          # readinessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: 3001
+          #   initialDelaySeconds: 5
+          #   periodSeconds: 10
+          #   timeoutSeconds: 2
+          #   failureThreshold: 3
+
