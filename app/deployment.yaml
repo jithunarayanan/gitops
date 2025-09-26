@@ -5,7 +5,7 @@ metadata:
   name: my-app
   labels: 
     app: my-app
-  namespace: my-app
+  namespace: bubbles-app
 spec:
   replicas: 3
   selector: 
